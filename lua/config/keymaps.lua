@@ -41,3 +41,27 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Escape insert mode
 keymap.set("i", "jj", "<ESC>", { silent = true })
+
+-- Use Unix like command: like Ctrl + p => Cursor Up ... etc
+keymap.set("i", "<C-p>", "<Up>")
+keymap.set("i", "<C-n>", "<Down>")
+keymap.set("i", "<C-b>", "<Left>")
+keymap.set("i", "<C-f>", "<Right>")
+
+-- neo tree
+keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>")
+
+local hop = require("hop")
+local directions = require("hop.hint").HintDirection
+vim.keymap.set("", "f", function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set("", "F", function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set("", "t", function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+end, { remap = true })
+vim.keymap.set("", "T", function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+end, { remap = true })

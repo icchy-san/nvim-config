@@ -13,6 +13,8 @@ return {
         "http",
         "rust",
         "sql",
+        "hcl",
+        "terraform",
       },
     },
     config = function(_, opts)
